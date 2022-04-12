@@ -1,0 +1,48 @@
+
+<html>
+<head>
+    <title>Login Page</title>
+
+
+</head>
+<style>
+
+.container{
+
+  margin: auto;
+  
+  width: 20%;
+  margin-top: 15%;
+  border: 3px solid ;
+  padding: 10px;
+  text-align: center;
+}
+</style>
+<body>
+    <div class="container">
+        
+      <div id="logo">
+        (logo)
+      </div>
+      <div>
+       <h1 id="login-header">Login</h1>
+      </div>
+        
+      <form action="" method="post">
+        <div>
+          <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}" id="username-txt">
+        </div>
+        <div>
+          <input type="password" placeholder="Password" nameS="password" value="{{ request.form.password }}" id="password-txt">
+        </div>
+        <div>  
+          <input class="btn btn-default" type="submit" value="Login" id="submit-btn">
+        </div>    
+      </form>
+        {% if error %}
+        <p class="error">
+            <strong>Error:</strong> {{ error }}
+            {% endif %}
+    </div>
+</body>
+</html>
