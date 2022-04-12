@@ -15,22 +15,50 @@
   margin-top: 15%;
   border: 3px solid ;
   padding: 10px;
+  border-radius: 25px;
   text-align: center;
+}
+
+.header{
+  margin: auto;
+  width: 42.5%;
+  margin-top: 3%;
+  border-top: 3px solid;
+  border-bottom: 3px solid;
+  padding: 5px;
+  font-family: "Helvetica", sans-serif;
+  font-size: 18;
+}
+
+#username-txt{
+  margin: auto;
+  margin-top: 5%;
+}
+
+#password-txt{
+  margin: auto;
+  margin-top: 2.5%;
+}
+
+#submit-btn{
+  margin: auto;
+  margin-top: 2.5%;
+  width: 15%;
 }
 </style>
 <body>
     <div class="container">
         
-      <div id="logo">
-        (logo)
+      <div id="logo" >
+       <img src="{{url_for('static', filename='osu-logo.png')}}" height="125" width="300"/>
       </div>
       <div>
-       <h1 id="login-header">Login</h1>
+       <h1 id="login-header" class="header">Student Tutoring</h1>
       </div>
         
       <form action="" method="post">
         <div>
-          <input type="text" placeholder="Username" name="username" value="{{ request.form.username }}" id="username-txt">
+          <input type="text" placeholder="CWID" name="username" value="{{ request.form.username }}" id="username-txt">
         </div>
         <div>
           <input type="password" placeholder="Password" nameS="password" value="{{ request.form.password }}" id="password-txt">
