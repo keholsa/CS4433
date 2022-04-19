@@ -1,7 +1,12 @@
 #DataBase file
 #  Pip install sqlalchemy
-from sqlalchemy import create_engine, text
+#  Pip install sqlalchemy.orm
+from sqlalchemy import *
+from sqlalchemy.orm import Session, sessionmaker
+
+
 engine = create_engine("sqlite+pysqlite:///:memory:", echo=True, future=True)
+metadata = MetaData()
 
 
 #schedule table
@@ -65,8 +70,6 @@ VALUES (1,'4:00 PM - 5:15 PM','NA','4:00 PM - 5:15 PM','NA','NA', 'NA')"""))
     
 
 #Tutee table
-with engine.connect() as conn:
-    #Create table
     conn.execute(text("""
 CREATE TABLE Tutee(
 Cwid varchar(16) PRIMARY KEY,
@@ -79,7 +82,7 @@ Foreign Key (Schedule_Id) references W_SCHEDULE(schedule_id)
     
 
 #Class table
-with engine.connect() as conn:
+
     conn.execute(text("""
 CREATE TABLE CLASS(
 Class_id varchar(8) PRIMARY KEY,
@@ -100,16 +103,11 @@ Foreign Key (Schedule_Id) references W_SCHEDULE(schedule_id)
     conn.execute(text("INSERT INTO CLASS VALUES ('2433', 18, 'C\C++ Programming', 'CS')"))
     conn.execute(text("INSERT INTO CLASS VALUES ('1117', 19, 'Compistion 1', 'ENGL')"))
     conn.execute(text("INSERT INTO CLASS VALUES ('1493', 20, 'American History Since 1865', 'HIST')"))
-    print()
-    print("RESULTS LOOKIE HERE VVVVVVVVVV")
-    result = conn.execute(text("SELECT name from CLASS"))
-    for row in result:
-        print(f"{row.name}")
-    print("RESULTS LOOKIE HERE" )
-    print()
+    
+    
     
 #Tutor table
-with engine.connect() as conn:
+
     conn.execute(text("""
 CREATE TABLE Tutor(
 Cwid varchar(16) PRIMARY KEY,
@@ -140,7 +138,6 @@ Foreign Key (Schedule_Id) references W_SCHEDULE(schedule_id)
     print()
     
 #Tutors for table
-with engine.connect() as conn:
     #Create Table
     conn.execute(text("""
 CREATE TABLE Tutors_for(
@@ -184,12 +181,10 @@ Class_id varchar(8)
     conn.execute(text("INSERT INTO Tutors_for(Tutor_num, Class_id) VALUES (10, '2144')"))
     conn.execute(text("INSERT INTO Tutors_for(Tutor_num, Class_id) VALUES (10, '1493')"))
     conn.execute(text("INSERT INTO Tutors_for(Tutor_num, Class_id) VALUES (10, '1117')"))
-    
-    
-    
+        
     
 #Appointment table    
-with engine.connect() as conn:
+
     conn.execute(text("""
 CREATE TABLE APPOINTMENT(
 Appointment_ID Integer auto_increment PRIMARY KEY,
@@ -205,6 +200,22 @@ Foreign Key (Tutee_id) references Tutee(Cwid)
 )
 """))
     #No prefill. Filled at runtime.
+     
+    print()
     
+    print("RESULTS LOOKIE HERE VVVVVVVVVV")
+    result = conn.execute(text("SELECT name from CLASS"))
+    for row in result:
+        print(f"{row.name}")
+    print("RESULTS LOOKIE HERE" )
+    print()
+    
+    #Getting specific value.
+    print("Specific Value")
+    Result = conn.execute(text("select Schedule_Id from CLASS where name = 'Calculus 3'"))
+    my_num = Result.first()[0]
+    print(my_num)
+
+
 conn.commit()
 
