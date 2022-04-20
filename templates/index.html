@@ -1,89 +1,149 @@
-<!--landing page for visiting users (students)-->
 
 <html>
-    <body></body>
-        <h2 align="center" style="color: orange;">
-            January 2021
-        </h2>
-        <br />
-          
-        <table bgcolor="lightgrey" align="center" 
-            cellspacing="21" cellpadding="21">
-
-            <caption align="top">
-
-            </caption>
+    <style>
+        .element{
+            background: lightgrey;
+            margin-top: 1.5%;
+            margin-left: 6%;
+            height: 77.5%;
+            border: 2px solid;
+        }
+        .container{
+            margin: auto;
+            border: solid 4px;
+            margin-top: 4%;
+            width: 92.5%;
+            height: 80%;
+            background-color: white;
+        }
+        .crn-case{
       
-            <thead>
-                <tr>
-                    <th>Sun</th>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>sat</th>
-                </tr>
-            </thead>
-              
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>1</td>
-                    <td>2</td>
-                </tr>
-                <tr></tr>
-                <tr>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                    <td>9</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>11</td>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>14</td>
-                    <td>15</td>
-                    <td>16</td>
-                </tr>
-                <tr>
-                    <td>17</td>
-                    <td>18</td>
-                    <td>19</td>
-                    <td>20</td>
-                    <td>21</td>
-                    <td>22</td>
-                    <td>23</td>
-                </tr>
-                <tr>
-                    <td>24</td>
-                    <td>25</td>
-                    <td>26</td>
-                    <td>27</td>
-                    <td>28</td>
-                    <td>29</td>
-                    <td>30</td>
-                </tr>
-                <tr>
-                    <td>31</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                </tr>
-            </tbody>
-        </table>
+            width: 2.5%;
+            margin-top: 2.5%;
+            margin-left: 43%;
+        }
+        #crn-list{
+            width: 500%;
+            height: 6.5%;
+            text-align: center;
+            font-size:x-large;
+
+        }
+        #left-container{
+            width: 30%;
+            float: left;
+        }
+        #right-container{
+            width: 50%;
+            float: right;
+            margin-right: 3%;
+        }
+        #search-container{
+            margin-top: 2.5%;
+            margin-left: 2.5%;
+        }
+        #select-a-tutor-container{
+            font-family: "Helvetica", sans-serif;
+            width: 35%;
+            margin: auto;
+        }
+        #select-a-date-container{
+            font-family: "Helvetica", sans-serif;
+            width: 17.5%;
+            margin: auto;
+        }
+        #tutor-info-table-container{
+            width: 95%;
+            margin-left: 2.5%;
+            margin-top: 2%;
+            height: 80%;
+            overflow-y: scroll;
+        }
+        #tutor-info-table{
+            width: 100%;
+            
+        }
+
+        #tutor-info-table td{
+            border: solid 2px;
+        }
+        #calendar-container{
+            height: 30%;
+            border: none;
+        }
+    </style>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <body style="background-color: #FF7300;">
+        <form>
+        <div id="container" class="container">
+            <div id="crn-case" class="crn-case">
+                <select name="crn-list" id="crn-list">
+                    <option value="temp1">temp1</option>
+                    <option value="temp2">temp2</option>
+                    <option value="temp3">temp3</option>
+                </select>
+            </div>
+            <div id="left-container" class="element">
+                <div id="select-a-tutor-container">
+                    <h2>Select a Tutor</h2>
+                </div>
+                <div id="search-container">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div id="tutor-info-table-container"></div>
+            </div>
+            <script src="{{url_for('static', filename='tutor-table-gen.js')}}"></script>
+            
+            <div id="right-container" class="element">
+                <div id="select-a-date-container">
+                    <h2>Select a Date</h2>
+                </div>
+                <div class="container" id="calendar-container">
+                    <div class="calendar">
+                      <div class="month">
+                        <i class="fa-solid fa-angle-left prev"></i>
+                        <div class="date">
+                          <h1></h1>
+                          <p></p>
+                        </div>
+                        <i class="fas fa-angle-right next"></i>
+                      </div>
+                      <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                      </div>
+                      <div class="days"></div>
+                    </div>
+                  </div>
+                  <div id="select-time-confirmation-container">
+                    <div id="select-a-time-container">
+                        <h2>Select a Time</h2>
+                    </div>
+                    <div id="select-time-container"></div>
+                    <div id="confirm-appointment-container">
+                        <div id="current-appointment-container">
+                            <h2>Current Appointment Selected</h2>
+                        </div>
+                        <textarea placeholder="testing..."></textarea>
+                    </div>
+                  </div>
+                  <div id="submit-btn-container">
+                      <input type="submit" value="Submit">
+                  </div>
+                </div>
+                <script src="{{url_for('static', filename='calendar-gen.js')}}"></script>
+
+            </div>
+        </div>
+        </form>
     </body>
-      
-    </html>
+</html>
