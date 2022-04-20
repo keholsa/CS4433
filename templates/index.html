@@ -81,12 +81,13 @@
         <form>
         <div id="container" class="container">
             <div id="crn-case" class="crn-case">
+                <div id="crn-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ crn_array }}</div>
                 <select name="crn-list" id="crn-list">
-                    <option value="temp1">temp1</option>
-                    <option value="temp2">temp2</option>
-                    <option value="temp3">temp3</option>
+
                 </select>
+
             </div>
+            <script src="{{url_for('static', filename='crn-gen.js')}}"></script>
             <div id="left-container" class="element">
                 <div id="select-a-tutor-container">
                     <h2>Select a Tutor</h2>
@@ -94,10 +95,25 @@
                 <div id="search-container">
                     <input type="text" placeholder="Search...">
                 </div>
-                <div id="tutor-info-table-container"></div>
+                <div id="selected-name-id-container">
+                    <input type="text" id="selected-name-id" placeholder="nameID" readonly="readonly">
+                    <input type="text" id="selected-rating-id" placeholder="ratingID" readonly="readonly"> 
+                </div>
+                <div id="tutor-info-table-container">
+                    <div id="tutor-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ name_array }}</div>
+
+                </div>
             </div>
             <script src="{{url_for('static', filename='tutor-table-gen.js')}}"></script>
-            
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("td").click(function() {
+                        alert("Hello world!");
+                    });
+                });
+            </script>
+            </script>
             <div id="right-container" class="element">
                 <div id="select-a-date-container">
                     <h2>Select a Date</h2>
@@ -140,9 +156,9 @@
                       <input type="submit" value="Submit">
                   </div>
                 </div>
-                <script src="{{url_for('static', filename='calendar-gen.js')}}"></script>
 
-            </div>
+                <script src="{{url_for('static', filename='calendar-gen.js')}}"></script>
+                <script src="{{url_for('static', filename='time-table-gen.js')}}"></script>            </div>
         </div>
         </form>
     </body>
