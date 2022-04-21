@@ -57,17 +57,20 @@ const renderCalendar = () => {
       i === new Date().getDate() &&
       date.getMonth() === new Date().getMonth()
     ) {
-      days += `<div class="today">${i}</div>`;
+      days += `<div id="${i}" class="cal-td">${i}</div>`;
     } else {
-      days += `<div>${i}</div>`;
+      days += `<div id="${i}" class="cal-td">${i}</div>`;
     }
   }
 
   for (let j = 1; j <= nextDays; j++) {
     days += `<div class="next-date">${j}</div>`;
+     
     
   }
   monthDays.innerHTML = days;
+
+  $("td").attr("id", "1");
 };
 
 document.querySelector(".prev").addEventListener("click", () => {
@@ -79,5 +82,6 @@ document.querySelector(".next").addEventListener("click", () => {
   date.setMonth(date.getMonth() + 1);
   renderCalendar();
 });
+
 
 renderCalendar();
