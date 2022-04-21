@@ -17,7 +17,7 @@ function timeTable(){
     //variable grab for available times
     var timeArrRaw = document.getElementById("time-array-FLASK").innerHTML;
     timeArr = timeArrRaw.split(" ");
-
+    timeArr = prettyTutors(timeArr);
     //definining row index
     var rowIndex = timeArr.length
 
@@ -44,3 +44,24 @@ function timeTable(){
 }
 
 timeTable()
+
+
+function prettyTutors(arr){
+
+    for(var i = 0; i < arr.length; i++)
+        if(i == 0){
+        arr[0] = arr[0].replace('[','');
+        arr[0] = arr[0].replace('\'','');
+        arr[0] = arr[0].replace('\'','');
+        arr[0] = arr[0].replace(',', '')
+        }
+        else{
+            arr[i] = arr[i].replace('\'', '');
+            arr[i] = arr[i].replace('\'','');
+            arr[i] = arr[i].replace(',', '')
+        }
+    
+    return arr
+
+
+}
