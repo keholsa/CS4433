@@ -12,6 +12,7 @@ function crnAdd(){
         option.id = crnArr[i];
         option.value = crnArr[i];
         option.text = crnArr[i];
+        option.className = "class-options";
 
     }
     }
