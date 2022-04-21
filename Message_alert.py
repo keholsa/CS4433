@@ -60,5 +60,8 @@ def emailAlert(subject, body, to, phoneCarrier=False):
 if __name__ == '__main__':
     # Calls to emailAlert function take this form
     ##  emailAlert("subject", "body of message", "email@address.com", phoneCarrier)
-    emailAlert("Test Auto-Message",
-               "This is a test of the automated email system.", "9704880472", "AT&T")
+    emailAlert("Automated Alert",
+               """This email serves as a reminder that you have an appointment scheduled at the OSU LASSO Tutoring Center. Please remember your appointment indicates your agreement to abide by the following statements and all OSU LASSO Tutoring Center policies. 
+               Students who cancel a LASSO Tutoring appointment after 9pm the night before their appointment or who miss their tutoring appointment will be charged a $15 no-show fee.
+               
+               Thank you for using the OSU LASSO Testing Center!""", "9704880472", "AT&T")
