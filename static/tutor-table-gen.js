@@ -33,7 +33,7 @@ function tutorTable(){
                     
     var count = 0;
     //tr auto generation with id application
-    for(var i = 0; i < rowIndex + 1 ; i++){
+    for(var i = 0; i < rowIndex / 2 ; i++){
     
     var tr = document.createElement('tr');
     tableBody.appendChild(tr);
