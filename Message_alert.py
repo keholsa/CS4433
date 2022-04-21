@@ -51,7 +51,10 @@ def emailAlert(subject, body, to, phoneCarrier=False):
     gmailServer = smtplib.SMTP("smtp.gmail.com", 587)
     gmailServer.starttls()
     gmailServer.login(botAddress, pswrd)
-    gmailServer.send_message(msgToSend)
+    if((to.isdigit() and phoneCarrier != False)):
+        gmailServer.send_message(msgToSend)
+    elif(to.isdigit() == False):
+        gmailServer.send_message(msgToSend)
 
     gmailServer.quit()
 
