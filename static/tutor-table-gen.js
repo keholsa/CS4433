@@ -4,7 +4,17 @@
 function tutorTable(){
     //find table container
     var tableDiv = document.getElementById('tutor-info-table-container');
-                    
+    
+    //tutor data grab
+    var tutorArrRaw = document.getElementById('tutor-array-FLASK').innerHTML;
+    tutorArr = tutorArrRaw.split(" ");
+
+    //tutorID data grab
+    var tutorIDArrRaw = document.getElementById('tutorID-array-FLASK').innerHTML;
+    tutorIDArr = tutorIDArrRaw.split(" ");
+
+    //tutor array index specification
+    rowIndex = tutorArr.length;
     //create table, does not exist without specified file
     var table = document.createElement('table');
     tableDiv.appendChild(table);
@@ -16,10 +26,10 @@ function tutorTable(){
     table.appendChild(tableBody);
                     
     //row index assigned  value for dev purposes only, equal to rows of incoming data
-    var rowIndex = 4
+
                     
     //tr auto generation with id application
-    for(var i = 0; i < rowIndex; i++){
+    for(var i = 0; i < rowIndex ; i++){
     
     var tr = document.createElement('tr');
     tableBody.appendChild(tr);
@@ -31,9 +41,13 @@ function tutorTable(){
         tr.appendChild(td);
             if(j == 0){
             td.setAttribute("id", "tutor-name-" + i);
+            td.setAttribute("tag", tutorIDArr[i -1 ]);
+            td.setAttribute("class", "tutor-td")
+            td.innerHTML = tutorArr[i];
             }
             else{
             td.setAttribute("id", "tutor-rating-" + i);
+            td.setAttribute("tag", "20" + [i]);
             }
         }
     }   
