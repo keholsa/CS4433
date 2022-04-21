@@ -5,8 +5,9 @@ function crnAdd(){
 
     crnArr = crnArrRaw.split(" ");
 
+    rowIndex = crnArr.length()
 
-    for(var i = 0; i < 5; i++){
+    for(var i = 0; i < rowIndex; i++){
         var option = document.createElement('option');
         selectBox.appendChild(option);
         option.id = crnArr[i];
@@ -15,6 +16,5 @@ function crnAdd(){
         option.className = "class-options";
 
     }
-    }
 
-    crnAdd();
+}
