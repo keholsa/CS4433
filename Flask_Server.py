@@ -18,9 +18,18 @@ TIME_ARR = ['01:00', '03:00', '04:00', '09:00', '13:00', '18:00']
 ########################
 
 
-@app.route('/tutorupdate')
-def tutee():
-    return render_template("tutee.html")
+@app.route('/tuteeupdate', methods=['POST', 'GET'])
+def tutorUpdate():
+    if request.method == 'POST':
+        #tutorID here
+        tuteeID = request.form['tutorIDChange']
+        tuteeName = request.form['tutorNameChange']
+
+        #update function?
+        
+        return redirect("/tutorupdateDATA")
+    else:
+        return render_template("tuteeUpdate.html")
 
 @app.route('/userInfo')
 def userInfo():
@@ -41,7 +50,7 @@ def home():
             return render_template("index.html", testVar = tuteeID, crn_array = CRN_ARR, name_array = NAME_ARR, 
         tutorID_array = TUTORID_ARR, dateID_array = DATEID_ARR, time_array = TIME_ARR)
     else:
-        return render_template("index.html",testVar = tuteeID, crn_array = CRN_ARR, name_array = NAME_ARR, 
+        return render_template("index.html", crn_array = CRN_ARR, name_array = NAME_ARR, 
         tutorID_array = TUTORID_ARR, dateID_array = DATEID_ARR, time_array = TIME_ARR)
 #FOR DEV PURPOSES ONLY, login.html TAKES DOMAIN '/'
 
