@@ -1,4 +1,5 @@
 
+
 <html>
     <style>
         .element{
@@ -95,7 +96,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
     <script type="text/javascript"></script>
     <body style="background-color: #FF7300;">
-        <form>
+        <form method="POST">
         <div id="container" class="container">
             <div id="crn-case" class="crn-case">
                 <div id="crn-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ crn_array }}</div>
@@ -207,13 +208,13 @@
                         <br>
                         <input type="text" id="class-id" placeholder="Class ID" name="class-id">
                         <br>
-                        <input type="text" id="selected-name-id" placeholder="Tutor ID" readonly="readonly">        
+                        <input type="text" id="selected-name-id" placeholder="Tutor ID" name="name-id">        
                         <br>
-                        <input type="text" id="selected-name-text" placeholder="Tutor Name">
+                        <input type="text" id="selected-name-text" placeholder="Tutor Name" name="name-txt">
                         <br>
-                        <input type="text" id="selected-date-id" placeholder="Calendar ID" readonly="readonly">        
+                        <input type="text" id="selected-date-id" placeholder="Calendar ID" name="date-id">        
                         <br>
-                        <input type="text" id="selected-time-id" placeholder="Time ID" readonly="readonly">        
+                        <input type="text" id="selected-time-id" placeholder="Time ID" name="time-id">        
                         <input type="submit" value="Submit">
                     </div>
                   </div>
