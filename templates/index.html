@@ -71,21 +71,44 @@
             height: 30%;
             border: none;
         }
+
+        #select-time-container{
+            height: 20%;
+            overflow-y: scroll;
+            width: 15%;
+        }
+        #select-time-table td{
+            border: solid 2px
+        }
+
+        #confirm-appointment-container{
+            margin: auto;
+            margin-top: -27.5%;
+            margin-left: 40%;
+        }
     </style>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+    <script type="text/javascript"></script>
     <body style="background-color: #FF7300;">
         <form>
         <div id="container" class="container">
             <div id="crn-case" class="crn-case">
                 <div id="crn-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ crn_array }}</div>
-                <select name="crn-list" id="crn-list">
+                <select name="crn-list" id="crn-list"></select>
+                <script>
+                $(document).ready(function() {
+                    $("#crn-list").click(function() {
 
-                </select>
-
+                    var conceptName = $('#crn-list :selected').text();
+                    $("#class-id").val(conceptName);
+                    });
+                });
+                </script>
             </div>
             <script src="{{url_for('static', filename='crn-gen.js')}}"></script>
             <div id="left-container" class="element">
@@ -95,25 +118,27 @@
                 <div id="search-container">
                     <input type="text" placeholder="Search...">
                 </div>
+
                 <div id="selected-name-id-container">
-                    <input type="text" id="selected-name-id" placeholder="nameID" readonly="readonly">
-                    <input type="text" id="selected-rating-id" placeholder="ratingID" readonly="readonly"> 
                 </div>
                 <div id="tutor-info-table-container">
                     <div id="tutor-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ name_array }}</div>
-
+                    <div id="tutorID-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ tutorID_array }}</div>
                 </div>
             </div>
             <script src="{{url_for('static', filename='tutor-table-gen.js')}}"></script>
-            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-            <script type="text/javascript">
+            <script>
+                //jquery to get tutor id
                 $(document).ready(function() {
-                    $("td").click(function() {
-                        alert("Hello world!");
+                    $(".tutor-td").click(function() {
+                        var key = $(this).attr("tag");
+                        var name = $(this).text();
+                    $("#selected-name-text").val(name);
+                    $("#selected-name-id").val(key)
                     });
                 });
             </script>
-            </script>
+        
             <div id="right-container" class="element">
                 <div id="select-a-date-container">
                     <h2>Select a Date</h2>
@@ -140,21 +165,55 @@
                       <div class="days"></div>
                     </div>
                   </div>
-                  <div id="select-time-confirmation-container">
+                  <div id="dateID-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ dateID_array }}</div>
+                  <script type="text/javascript">
+                    //jquery to get tutor id
+                    $(document).ready(function() {
+                        $(".cal-td").click(function() {
+                            var key = $(this).attr("id");
+                        $("#selected-date-id").val(key)
+                        });
+                    });
+                </script>
+                    <br>
+                    <div id="select-time-confirmation-container">
                     <div id="select-a-time-container">
                         <h2>Select a Time</h2>
                     </div>
+                    <div id="time-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ time_array }}</div>
                     <div id="select-time-container"></div>
+                    <script>
+                    //jquery to get tutor id
+                    $(document).ready(function() {
+                        $(".time-td").click(function() {
+                            var key = $(this).attr("tag");
+                        $("#selected-time-id").val(key)
+                        });
+                    });
+                    </script>
+                    <br>
+                    <br>
+                    <br>
                     <div id="confirm-appointment-container">
                         <div id="current-appointment-container">
                             <h2>Current Appointment Selected</h2>
                         </div>
-                        <textarea placeholder="testing..."></textarea>
+                        
+                        <input type="text" id="tutee-id" placeholder="Enter your CWID">
+                        <br>
+                        <input type="text" id="class-id" placeholder="Class ID">
+                        <br>
+                        <input type="text" id="selected-name-id" placeholder="Tutor ID" readonly="readonly">        
+                        <br>
+                        <input type="text" id="selected-name-text" placeholder="Tutor Name">
+                        <br>
+                        <input type="text" id="selected-date-id" placeholder="Calendar ID" readonly="readonly">        
+                        <br>
+                        <input type="text" id="selected-time-id" placeholder="Time ID" readonly="readonly">        
+                        <input type="submit" value="Submit">
                     </div>
                   </div>
-                  <div id="submit-btn-container">
-                      <input type="submit" value="Submit">
-                  </div>
+
                 </div>
 
                 <script src="{{url_for('static', filename='calendar-gen.js')}}"></script>
