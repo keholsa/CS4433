@@ -100,14 +100,18 @@
             <div id="crn-case" class="crn-case">
                 <div id="crn-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ crn_array }}</div>
                 <select name="crn-list" id="crn-list"></select>
+                <button id="crn-submit" onclick="crnGrab()" style="margin-left: 600%; margin-top: -125%;">Confirm Class Name</button>
                 <script>
-                $(document).ready(function() {
-                    $("#crn-list").click(function() {
+
+                function crnGrab(){
+                    $(document).ready(function() {
+                    $("#crn-submit").click(function() {
 
                     var conceptName = $('#crn-list :selected').text();
                     $("#class-id").val(conceptName);
                     });
                 });
+                }
                 </script>
             </div>
             <script src="{{url_for('static', filename='crn-gen.js')}}"></script>
@@ -199,9 +203,9 @@
                             <h2>Current Appointment Selected</h2>
                         </div>
                         
-                        <input type="text" id="tutee-id" placeholder="Enter your CWID">
+                        <input type="text" id="tutee-id" placeholder="Enter your CWID" name="tutee-id">
                         <br>
-                        <input type="text" id="class-id" placeholder="Class ID">
+                        <input type="text" id="class-id" placeholder="Class ID" name="class-id">
                         <br>
                         <input type="text" id="selected-name-id" placeholder="Tutor ID" readonly="readonly">        
                         <br>
