@@ -5,7 +5,10 @@ function crnAdd(){
 
     crnArr = crnArrRaw.split(" ");
 
-    rowIndex = crnArr.length()
+
+    rowIndex = crnArr.length
+
+    crnArr = crnPretty(crnArr);
 
     for(var i = 0; i < rowIndex; i++){
         var option = document.createElement('option');
@@ -16,5 +19,26 @@ function crnAdd(){
         option.className = "class-options";
 
     }
+
+}
+
+crnAdd();
+
+function crnPretty(arr){
+
+    for(var i = 0; i < arr.length; i++)
+        if(i == 0){
+        arr[0] = arr[0].replace('[','');
+        arr[0] = arr[0].replace('\'','');
+        arr[0] = arr[0].replace('\'','');
+        arr[0] = arr[0].replace(',', '')
+        }
+        else{
+            arr[i] = arr[i].replace('\'', '');
+            arr[i] = arr[i].replace('\'','');
+            arr[i] = arr[i].replace(',', '')
+        }
+    
+    return arr
 
 }
