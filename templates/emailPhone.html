@@ -1,26 +1,28 @@
-<p>&nbsp;Please input your name</p>
+<html>
+    <form method="POST">
+    <body>
+        <h1>FOR EMAILS AND TEXTS</h1>
+        <div>
+            <label>Please input your name:</label>
+            <input type="text" name="smsName">
+            <br>
+            <label>Please input your CWID:</label>
+            <input type="text" name="smsCWID">
+            <br>
+            <label>Please input your email:</label>
+            <input type="text" name="smsEmail">
+            <br>
+            <label>Please select a provider:</label>
+            <input type="radio" id="radio-select-att" name="radio-select" value="AT&T">
+                <label for="radio-select-att" name="radio-select-att" value="AT&T">AT&T</label>
+            <input type="radio" id="radio-select-verizon" name="radio-select" value="Verizon">
+                <label for="radio-select-verizon" name="radio-select-verizon" value="Verizon">Verizon</label>
+            <input type="radio" id="radio-select-tmobile" name="radio-select" value="T-Mobile">
+                <label for="radio-select-tmobile" name="radio-select-tmobile" value="T-Mobile">T-Mobile</label>
+            <input type="submit" name="submit">
 
-<form enctype="text/plain" id="1" method="get" name="Input">&nbsp;</form>
 
-<p>Please input your CWID.</p>
-
-<form enctype="text/plain" method="get" name="input2">&nbsp;</form>
-
-<hr />
-<p>Please Input your email:</p>
-
-<form enctype="text/plain" method="get" name="EmailForm">&nbsp;</form>
-
-<p>Please chose your phone provider:</p>
-
-<p><input checked="checked" name="AT&T" type="radio" />&nbsp;AT&T</p>
-
-<p><input checked="checked" name="Verizon" type="radio" />Verizon</p>
-
-<p><input checked="checked" name="T-Mobile" type="radio" />T-Mobile</p>
-
-<p>&nbsp;</p>
-
-<p><input name="Finished" type="submit" /></p>
-
-<p>&nbsp;</p>
+        </div>
+    </body>
+    </form>
+</html>
