@@ -1,5 +1,4 @@
 
-
 <html>
     <style>
         .element{
@@ -101,18 +100,16 @@
             <div id="crn-case" class="crn-case">
                 <div id="crn-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ crn_array }}</div>
                 <select name="crn-list" id="crn-list"></select>
-                <button id="crn-submit" onclick="crnGrab()" style="margin-left: 600%; margin-top: -125%;">Confirm Class Name</button>
                 <script>
 
-                function crnGrab(){
                     $(document).ready(function() {
-                    $("#crn-submit").click(function() {
+                    $("#crn-list").click(function() {
 
                     var conceptName = $('#crn-list :selected').text();
                     $("#class-id").val(conceptName);
                     });
                 });
-                }
+            
                 </script>
             </div>
             <script src="{{url_for('static', filename='crn-gen.js')}}"></script>
