@@ -1,6 +1,20 @@
 <html>
-    <form method="POST">
+<form method="POST">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <body>
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <a class="navbar-brand">OSU LASSO Tutoring Center</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="127.0.0.1:500/">Home</a></li>
+                <li><a href="127.0.0.1:500/tuteeupdate">Update</a></li>
+                <li><a href="127.0.0.1:500/appointmentdelete">Delete</a></li>
+                <li class="active"><a href="#">Email</a></li>
+            </ul>
+        </nav>
+
         <h1>FOR EMAILS AND TEXTS</h1>
         <div>
             <label>Please input your name:</label>
@@ -14,15 +28,16 @@
             <br>
             <label>Please select a provider:</label>
             <input type="radio" id="radio-select-att" name="radio-select" value="AT&T">
-                <label for="radio-select-att" name="radio-select-att" value="AT&T">AT&T</label>
+            <label for="radio-select-att" name="radio-select-att" value="AT&T">AT&T</label>
             <input type="radio" id="radio-select-verizon" name="radio-select" value="Verizon">
-                <label for="radio-select-verizon" name="radio-select-verizon" value="Verizon">Verizon</label>
+            <label for="radio-select-verizon" name="radio-select-verizon" value="Verizon">Verizon</label>
             <input type="radio" id="radio-select-tmobile" name="radio-select" value="T-Mobile">
-                <label for="radio-select-tmobile" name="radio-select-tmobile" value="T-Mobile">T-Mobile</label>
+            <label for="radio-select-tmobile" name="radio-select-tmobile" value="T-Mobile">T-Mobile</label>
             <input type="submit" name="submit">
 
 
         </div>
     </body>
-    </form>
+</form>
+
 </html>
