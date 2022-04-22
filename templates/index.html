@@ -1,115 +1,138 @@
-
 <html>
-    <style>
-        .element{
-            background: lightgrey;
-            margin-top: 1.5%;
-            margin-left: 6%;
-            height: 77.5%;
-            border: 2px solid;
-        }
-        .container{
-            margin: auto;
-            border: solid 4px;
-            margin-top: 4%;
-            width: 92.5%;
-            height: 80%;
-            background-color: white;
-        }
-        .crn-case{
-      
-            width: 2.5%;
-            margin-top: 2.5%;
-            margin-left: 43%;
-        }
-        #crn-list{
-            width: 500%;
-            height: 6.5%;
-            text-align: center;
-            font-size:x-large;
+<style>
+    .element {
+        background: lightgrey;
+        margin-top: 1.5%;
+        margin-left: 6%;
+        height: 77.5%;
+        border: 2px solid;
+    }
 
-        }
-        #left-container{
-            width: 30%;
-            float: left;
-        }
-        #right-container{
-            width: 50%;
-            float: right;
-            margin-right: 3%;
-        }
-        #search-container{
-            margin-top: 2.5%;
-            margin-left: 2.5%;
-        }
-        #select-a-tutor-container{
-            font-family: "Helvetica", sans-serif;
-            width: 35%;
-            margin: auto;
-        }
-        #select-a-date-container{
-            font-family: "Helvetica", sans-serif;
-            width: 17.5%;
-            margin: auto;
-        }
-        #tutor-info-table-container{
-            width: 95%;
-            margin-left: 2.5%;
-            margin-top: 2%;
-            height: 80%;
-            overflow-y: scroll;
-        }
-        #tutor-info-table{
-            width: 100%;
-            
-        }
+    .container {
+        margin: auto;
+        border: solid 4px;
+        margin-top: 4%;
+        width: 92.5%;
+        height: 80%;
+        background-color: white;
+    }
 
-        #tutor-info-table td{
-            border: solid 2px;
-        }
-        #calendar-container{
-            height: 30%;
-            border: none;
-        }
+    .crn-case {
 
-        #select-time-container{
-            height: 20%;
-            overflow-y: scroll;
-            width: 15%;
-        }
-        #select-time-table td{
-            border: solid 2px
-        }
+        width: 2.5%;
+        margin-top: 2.5%;
+        margin-left: 43%;
+    }
 
-        #confirm-appointment-container{
-            margin: auto;
-            margin-top: -27.5%;
-            margin-left: 40%;
-        }
-    </style>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-    />
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-    <script type="text/javascript"></script>
-    <body style="background-color: #FF7300;">
-        <form method="POST">
+    #crn-list {
+        width: 500%;
+        height: 6.5%;
+        text-align: center;
+        font-size: x-large;
+
+    }
+
+    #left-container {
+        width: 30%;
+        float: left;
+    }
+
+    #right-container {
+        width: 50%;
+        float: right;
+        margin-right: 3%;
+    }
+
+    #search-container {
+        margin-top: 2.5%;
+        margin-left: 2.5%;
+    }
+
+    #select-a-tutor-container {
+        font-family: "Helvetica", sans-serif;
+        width: 35%;
+        margin: auto;
+    }
+
+    #select-a-date-container {
+        font-family: "Helvetica", sans-serif;
+        width: 17.5%;
+        margin: auto;
+    }
+
+    #tutor-info-table-container {
+        width: 95%;
+        margin-left: 2.5%;
+        margin-top: 2%;
+        height: 80%;
+        overflow-y: scroll;
+    }
+
+    #tutor-info-table {
+        width: 100%;
+
+    }
+
+    #tutor-info-table td {
+        border: solid 2px;
+    }
+
+    #calendar-container {
+        height: 30%;
+        border: none;
+    }
+
+    #select-time-container {
+        height: 20%;
+        overflow-y: scroll;
+        width: 15%;
+    }
+
+    #select-time-table td {
+        border: solid 2px
+    }
+
+    #confirm-appointment-container {
+        margin: auto;
+        margin-top: -27.5%;
+        margin-left: 40%;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript"></script>
+
+<body style="background-color: #FF7300;">
+
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand">OSU LASSO Tutoring Center</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="127.0.0.1:500/tuteeupdate">Update</a></li>
+            <li><a href="127.0.0.1:500/appointmentdelete">Delete</a></li>
+            <li><a href="127.0.0.1:500/emailsms">Email</a></li>
+        </ul>
+    </nav>
+
+    <form method="POST">
         <div id="container" class="container">
             <div id="crn-case" class="crn-case">
                 <div id="crn-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ crn_array }}</div>
                 <select name="crn-list" id="crn-list"></select>
                 <script>
 
-                    $(document).ready(function() {
-                    $("#crn-list").click(function() {
+                    $(document).ready(function () {
+                        $("#crn-list").click(function () {
 
-                    var conceptName = $('#crn-list :selected').text();
-                    $("#class-id").val(conceptName);
+                            var conceptName = $('#crn-list :selected').text();
+                            $("#class-id").val(conceptName);
+                        });
                     });
-                });
-            
+
                 </script>
             </div>
             <script src="{{url_for('static', filename='crn-gen.js')}}"></script>
@@ -131,67 +154,67 @@
             <script src="{{url_for('static', filename='tutor-table-gen.js')}}"></script>
             <script>
                 //jquery to get tutor id
-                $(document).ready(function() {
-                    $(".tutor-td").click(function() {
+                $(document).ready(function () {
+                    $(".tutor-td").click(function () {
                         var key = $(this).attr("tag");
                         var name = $(this).text();
-                    $("#selected-name-text").val(name);
-                    $("#selected-name-id").val(key)
+                        $("#selected-name-text").val(name);
+                        $("#selected-name-id").val(key)
                     });
                 });
             </script>
-        
+
             <div id="right-container" class="element">
                 <div id="select-a-date-container">
                     <h2>Select a Date</h2>
                 </div>
                 <div class="container" id="calendar-container">
                     <div class="calendar">
-                      <div class="month">
-                        <i class="fa-solid fa-angle-left prev"></i>
-                        <div class="date">
-                          <h1></h1>
-                          <p></p>
+                        <div class="month">
+                            <i class="fa-solid fa-angle-left prev"></i>
+                            <div class="date">
+                                <h1></h1>
+                                <p></p>
+                            </div>
+                            <i class="fas fa-angle-right next"></i>
                         </div>
-                        <i class="fas fa-angle-right next"></i>
-                      </div>
-                      <div class="weekdays">
-                        <div>Sun</div>
-                        <div>Mon</div>
-                        <div>Tue</div>
-                        <div>Wed</div>
-                        <div>Thu</div>
-                        <div>Fri</div>
-                        <div>Sat</div>
-                      </div>
-                      <div class="days"></div>
+                        <div class="weekdays">
+                            <div>Sun</div>
+                            <div>Mon</div>
+                            <div>Tue</div>
+                            <div>Wed</div>
+                            <div>Thu</div>
+                            <div>Fri</div>
+                            <div>Sat</div>
+                        </div>
+                        <div class="days"></div>
                     </div>
-                  </div>
-                  <div id="dateID-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ dateID_array }}</div>
-                  <script type="text/javascript">
+                </div>
+                <div id="dateID-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ dateID_array }}</div>
+                <script type="text/javascript">
                     //jquery to get tutor id
-                    $(document).ready(function() {
-                        $(".cal-td").click(function() {
+                    $(document).ready(function () {
+                        $(".cal-td").click(function () {
                             var key = $(this).attr("id");
-                        $("#selected-date-id").val(key)
+                            $("#selected-date-id").val(key)
                         });
                     });
                 </script>
-                    <br>
-                    <div id="select-time-confirmation-container">
+                <br>
+                <div id="select-time-confirmation-container">
                     <div id="select-a-time-container">
                         <h2>Select a Time</h2>
                     </div>
                     <div id="time-array-FLASK" style="visibility: hidden; font-size: 1px;">{{ time_array }}</div>
                     <div id="select-time-container"></div>
                     <script>
-                    //jquery to get tutor id
-                    $(document).ready(function() {
-                        $(".time-td").click(function() {
-                            var key = $(this).attr("tag");
-                        $("#selected-time-id").val(key)
+                        //jquery to get tutor id
+                        $(document).ready(function () {
+                            $(".time-td").click(function () {
+                                var key = $(this).attr("tag");
+                                $("#selected-time-id").val(key)
+                            });
                         });
-                    });
                     </script>
                     <br>
                     <br>
@@ -200,27 +223,29 @@
                         <div id="current-appointment-container">
                             <h2>Current Appointment Selected</h2>
                         </div>
-                        
+
                         <input type="text" id="tutee-id" placeholder="Enter your CWID" name="tutee-id">
                         <br>
                         <input type="text" id="class-id" placeholder="Class ID" name="class-id">
                         <br>
-                        <input type="text" id="selected-name-id" placeholder="Tutor ID" name="name-id">        
+                        <input type="text" id="selected-name-id" placeholder="Tutor ID" name="name-id">
                         <br>
                         <input type="text" id="selected-name-text" placeholder="Tutor Name" name="name-txt">
                         <br>
-                        <input type="text" id="selected-date-id" placeholder="Calendar ID" name="date-id">        
+                        <input type="text" id="selected-date-id" placeholder="Calendar ID" name="date-id">
                         <br>
-                        <input type="text" id="selected-time-id" placeholder="Time ID" name="time-id">        
+                        <input type="text" id="selected-time-id" placeholder="Time ID" name="time-id">
                         <input type="submit" value="Submit">
                     </div>
-                  </div>
-
                 </div>
 
-                <script src="{{url_for('static', filename='calendar-gen.js')}}"></script>
-                <script src="{{url_for('static', filename='time-table-gen.js')}}"></script>            </div>
+            </div>
+
+            <script src="{{url_for('static', filename='calendar-gen.js')}}"></script>
+            <script src="{{url_for('static', filename='time-table-gen.js')}}"></script>
         </div>
-        </form>
-    </body>
+        </div>
+    </form>
+</body>
+
 </html>
