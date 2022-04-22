@@ -538,7 +538,7 @@ print(get_num_of_tutors())
 
 
 
-""" Working code. Use me if shit breaks:
+""" Working code:
 
 #For Testing
     -- Was right below the appointment table --
