@@ -1,6 +1,21 @@
 <html>
-    <form method="POST">
+<form method="POST">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <body>
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <a class="navbar-brand">OSU LASSO Tutoring Center</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="#">Update</a></li>
+                <li><a href="/appointmentdelete">Delete</a></li>
+                <li><a href="/emailsms">Email</a></li>
+            </ul>
+        </nav>
+
         <div id="tutor-data-FLASK">{{ tutorData }}</div>
         <div id="tutor-data-container">
             <h1>CHANGE TUTOR INFORMATION</h1>
@@ -13,5 +28,6 @@
             <input type="submit" name="submit">
         </div>
     </body>
-    </form>
+</form>
+
 </html>
