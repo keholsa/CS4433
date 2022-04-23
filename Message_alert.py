@@ -2,12 +2,20 @@ import email
 import smtplib
 from email.message import EmailMessage
 
+# Function definition for email and text allerts
+# Subject: The subject line of the message
+# Body: The body of the message
+# To: The address, whether an email or phone number, that the message will be sent to
+# PhoneCarrier: an optional parameter for if the phone carrier is provided. If none is
+#               provided then a text message will not be sent.
+
 
 def emailAlert(subject, body, to, phoneCarrier=False):
     msgToSend = EmailMessage()
     msgToSend.set_content(body)
     msgToSend['subject'] = subject
 
+    # Logic for selecting the correct phone carrier if one is provided.
     carrier = ""
     if(phoneCarrier):
         if(phoneCarrier == "AT&T"):
@@ -39,20 +47,25 @@ def emailAlert(subject, body, to, phoneCarrier=False):
         else:
             carrier = False
 
+    # Logic to append the phone carrier email to the end of the phone number
     if(phoneCarrier != False):
         msgToSend['to'] = to + carrier
     else:
         msgToSend['to'] = to
 
+    # The bot email's information
     botAddress = "testandemailalerts@gmail.com"
     msgToSend['from'] = botAddress
     pswrd = "truhdxqpnonbupda"
 
+    # Connecting to the google server
     gmailServer = smtplib.SMTP("smtp.gmail.com", 587)
     gmailServer.starttls()
     gmailServer.login(botAddress, pswrd)
+    # Sending the text if it is a phone number and the phoneCarrier is provided.
     if((to.isdigit() and phoneCarrier != False)):
         gmailServer.send_message(msgToSend)
+    # Sending the email if an email is provided.
     elif(to.isdigit() == False):
         gmailServer.send_message(msgToSend)
 
